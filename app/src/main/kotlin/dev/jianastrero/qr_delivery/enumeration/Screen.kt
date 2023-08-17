@@ -84,11 +84,5 @@ sealed class Screen(route: String) {
     }
 
     object Home : Screen("home")
-
-    object Detail : Screen("route") {
-        val TITLE = argument<String>("title")
-        val VALUE = argument<Float>("value")
-
-        override val arguments: List<Argument<*>> = listOf(TITLE, VALUE)
-    }
+    object Auth : Screen("auth")
 }
