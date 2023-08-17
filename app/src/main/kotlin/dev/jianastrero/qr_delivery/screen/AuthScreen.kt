@@ -2,6 +2,7 @@ package dev.jianastrero.qr_delivery.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -28,6 +29,7 @@ import dev.jianastrero.qr_delivery.ui.theme.QRDeliveryAppTheme
 
 @Composable
 fun AuthScreen(
+    onLoginClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val backgroundPainter = painterResource(id = R.drawable.design_one)
@@ -53,8 +55,20 @@ fun AuthScreen(
                     top = 256.dp
                 )
         ) {
-            LoginWithGoogle(modifier = Modifier.fillMaxWidth())
-            LoginWithApple(modifier = Modifier.fillMaxWidth())
+            LoginWithGoogle(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable {
+                         onLoginClicked()
+                    }
+            )
+            LoginWithApple(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable {
+                        onLoginClicked()
+                    }
+            )
         }
         Column(
             modifier = Modifier
@@ -82,6 +96,6 @@ fun AuthScreen(
 @Composable
 private fun AuthScreenPreview() {
     QRDeliveryAppTheme {
-        AuthScreen()
+        AuthScreen(onLoginClicked = {})
     }
 }
