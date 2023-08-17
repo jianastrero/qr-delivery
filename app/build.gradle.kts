@@ -1,3 +1,7 @@
+val appPackageName: String by project
+val appVersionCode: String by project
+val appVersionName: String by project
+
 val kotlinVersion: String by project
 val androidXCoreVersion: String by project
 val androidXLifecycleVersion: String by project
@@ -17,17 +21,17 @@ plugins {
 }
 
 android {
-    namespace = "com.jianastrero.templateandroidapp"
+    namespace = appPackageName
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.jianastrero.templateandroidapp"
+        applicationId = appPackageName
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = appVersionCode.toInt()
+        versionName = appVersionName
 
-        testInstrumentationRunner = "com.jianastrero.templateandroidapp.runner.HiltTestRunner"
+        testInstrumentationRunner = "${appPackageName}.runner.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
