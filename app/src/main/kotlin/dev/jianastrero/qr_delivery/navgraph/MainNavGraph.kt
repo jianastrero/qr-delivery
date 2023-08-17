@@ -30,12 +30,7 @@ fun MainNavGraph(navController: NavHostController = rememberNavController()) {
             )
         }
         composable(Screen.Home.route) {
-            HomeScreen(
-                onNextClick = { _, _ ->
-                },
-                modifier = Modifier
-                    .fillMaxSize()
-            )
+            HomeScreen(modifier = Modifier.fillMaxSize())
         }
     }
 }
