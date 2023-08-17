@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver
 import android.view.animation.AccelerateDecelerateInterpolator
-import android.view.animation.AnticipateInterpolator
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
@@ -15,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.animation.doOnEnd
 import dagger.hilt.android.AndroidEntryPoint
 import dev.jianastrero.qr_delivery.navgraph.MainNavGraph
-import dev.jianastrero.qr_delivery.ui.theme.TemplateAndroidAppTheme
+import dev.jianastrero.qr_delivery.ui.theme.QRDeliveryAppTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -34,7 +33,7 @@ class MainActivity : ComponentActivity(), ViewTreeObserver.OnPreDrawListener {
         setSplashScreenAnimation()
 
         setContent {
-            TemplateAndroidAppTheme {
+            QRDeliveryAppTheme {
                 MainNavGraph()
             }
         }
@@ -103,7 +102,7 @@ class MainActivity : ComponentActivity(), ViewTreeObserver.OnPreDrawListener {
 @Preview
 @Composable
 private fun MainActivityPreview() {
-    TemplateAndroidAppTheme {
+    QRDeliveryAppTheme {
         MainNavGraph()
     }
 }

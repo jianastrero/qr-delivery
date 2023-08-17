@@ -22,7 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import dev.jianastrero.qr_delivery.ui.theme.TemplateAndroidAppTheme
+import dev.jianastrero.qr_delivery.ui.theme.QRDeliveryAppTheme
 import dev.jianastrero.qr_delivery.viewmodel.domain.IHomeViewModel
 import dev.jianastrero.qr_delivery.viewmodel.implementation.HomeViewModel
 
@@ -93,7 +93,7 @@ fun HomeScreen(
 @Preview
 @Composable
 private fun HomeScreenPreview() {
-    TemplateAndroidAppTheme {
+    QRDeliveryAppTheme {
         HomeScreen(
             onNextClick = { _, _ -> },
             viewModel = IHomeViewModel.Preview
