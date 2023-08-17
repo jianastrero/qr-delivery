@@ -2,7 +2,7 @@ package dev.jianastrero.qr_delivery.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Primary = Color(0xFF1E72EB)
+val Primary = Color(0xFF430966)
 
 val Text = Color(0xDF333333)
 val TextDark = Color(0xDFCCCCCC)
