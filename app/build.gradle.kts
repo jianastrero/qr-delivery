@@ -18,12 +18,12 @@ plugins {
 
 android {
     namespace = "com.jianastrero.templateandroidapp"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.jianastrero.templateandroidapp"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
