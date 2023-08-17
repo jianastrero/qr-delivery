@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Template Android App"
+rootProject.name = "QR Delivery"
 include(":app")
