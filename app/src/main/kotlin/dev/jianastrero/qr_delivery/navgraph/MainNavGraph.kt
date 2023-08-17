@@ -8,14 +8,18 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import dev.jianastrero.qr_delivery.enumeration.Screen
+import dev.jianastrero.qr_delivery.screen.AuthScreen
 import dev.jianastrero.qr_delivery.screen.HomeScreen
 
 @Composable
 fun MainNavGraph(navController: NavHostController = rememberNavController()) {
     NavHost(
         navController = navController,
-        startDestination = Screen.Home.route
+        startDestination = Screen.Auth.route
     ) {
+        composable(Screen.Auth.route) {
+            AuthScreen(modifier = Modifier.fillMaxSize())
+        }
         composable(Screen.Home.route) {
             HomeScreen(
                 onNextClick = { _, _ ->
