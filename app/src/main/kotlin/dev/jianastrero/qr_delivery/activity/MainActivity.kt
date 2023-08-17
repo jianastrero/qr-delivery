@@ -6,6 +6,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AnticipateInterpolator
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -80,7 +81,7 @@ class MainActivity : ComponentActivity(), ViewTreeObserver.OnPreDrawListener {
                 )
 
                 val animationSet = AnimatorSet().apply {
-                    interpolator = AnticipateInterpolator()
+                    interpolator = AccelerateDecelerateInterpolator()
                     duration = 500L
                 }
 
