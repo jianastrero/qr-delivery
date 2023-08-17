@@ -1,0 +1,45 @@
+# IntelliJ IDEA related
+*.iml
+*.ipr
+*.iws
+.idea/
+.idea_modules/
+
+# gradle related
+.gradle/
+build/
+
+# Android related
+target/
+local.properties
+*.ap_
+*.aab
+*.aar
+*.dex
+*.class
+bin/
+gen/
+out/
+release/
+proguard/
+
+# Project local configuration
+proguard.cfg
+proguard-rules.pro
+proguard-rules.txt
+
+# Log Files
+*.log
+
+# OSX
+*.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Vim
+*.swp
+
+# Backup files
+*~
