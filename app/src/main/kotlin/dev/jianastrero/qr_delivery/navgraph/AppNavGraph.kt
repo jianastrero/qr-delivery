@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import dev.jianastrero.qr_delivery.enumeration.Screen
 import dev.jianastrero.qr_delivery.extension.composable
+import dev.jianastrero.qr_delivery.extension.navigate
 import dev.jianastrero.qr_delivery.screen.AuthScreen
 import dev.jianastrero.qr_delivery.screen.MainScreen
 
@@ -24,7 +25,7 @@ fun AppNavGraph(
         composable(Screen.Auth) {
             AuthScreen(
                 onLoginClicked = {
-                    navController.navigate(Screen.Main.route) {
+                    navController.navigate(Screen.Main) {
                         popUpTo(Screen.Auth.route) {
                             inclusive = true
                         }
