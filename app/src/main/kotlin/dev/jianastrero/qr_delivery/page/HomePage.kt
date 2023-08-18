@@ -32,7 +32,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -44,6 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.jianastrero.qr_delivery.R
+import dev.jianastrero.qr_delivery.extension.primaryShadow
 import dev.jianastrero.qr_delivery.ui.theme.Accent
 import dev.jianastrero.qr_delivery.ui.theme.QRDeliveryAppTheme
 import dev.jianastrero.qr_delivery.viewmodel.domain.IHomeViewModel
@@ -85,7 +85,7 @@ private fun LocationComponent(modifier: Modifier = Modifier) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
-            .shadow(4.dp, shape)
+            .primaryShadow(shape)
             .background(Color.White, shape)
             .padding(horizontal = 12.dp, vertical = 8.dp)
     ) {
@@ -121,7 +121,7 @@ private fun NotifyButton(modifier: Modifier = Modifier) {
 
     Box(
         modifier = modifier
-            .shadow(4.dp, shape)
+            .primaryShadow(shape)
             .clip(shape)
             .background(Color.White)
             .padding(8.dp)
