@@ -5,19 +5,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import dev.jianastrero.qr_delivery.enumeration.Screen
+import dev.jianastrero.qr_delivery.extension.composable
 import dev.jianastrero.qr_delivery.screen.AuthScreen
 import dev.jianastrero.qr_delivery.screen.HomeScreen
 
 @Composable
-fun MainNavGraph(navController: NavHostController = rememberNavController()) {
+fun MainNavGraph(
+    modifier: Modifier = Modifier,
+    navController: NavHostController = rememberNavController()
+) {
     NavHost(
         navController = navController,
-        startDestination = Screen.Auth.route
+        startDestination = Screen.Auth.route,
+        modifier = modifier
     ) {
-        composable(Screen.Auth.route) {
+        composable(Screen.BottomNav.Home) {
             AuthScreen(
                 onLoginClicked = {
                     navController.navigate(Screen.Main.route) {
@@ -29,7 +33,7 @@ fun MainNavGraph(navController: NavHostController = rememberNavController()) {
                 modifier = Modifier.fillMaxSize()
             )
         }
-        composable(Screen.Main.route) {
+        composable(Screen.Main) {
             HomeScreen(modifier = Modifier.fillMaxSize())
         }
     }
