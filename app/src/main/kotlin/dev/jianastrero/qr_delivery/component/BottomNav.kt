@@ -1,6 +1,7 @@
 package dev.jianastrero.qr_delivery.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -52,6 +53,9 @@ fun BottomNav(
                 isSelected = currentBackStackEntry?.destination?.route == it.route,
                 bottomNav = it,
                 isCircle = it == BottomNavEnum.Track,
+                onClick = {
+
+                },
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxHeight()
@@ -64,15 +68,33 @@ fun BottomNav(
 private fun BottomNavItem(
     isSelected: Boolean,
     bottomNav: BottomNavEnum,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
     isCircle: Boolean = false
 ) {
-    Box(modifier = modifier) {
+    Box(
+        modifier = Modifier
+            .let {
+                if (isCircle) {
+                    it
+                } else {
+                    it.clickable(onClick = onClick)
+                }
+            }
+            .then(modifier)
+    ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
             modifier = Modifier
                 .clip(if (isCircle) CircleShape else RectangleShape)
+                .let {
+                    if (isCircle) {
+                        it.clickable(onClick = onClick)
+                    } else {
+                        it
+                    }
+                }
                 .background(if (isCircle) Accent else Color.Transparent)
                 .size(TOOLBAR_HEIGHT)
                 .padding(6.dp)
