@@ -7,7 +7,7 @@ import dev.jianastrero.qr_delivery.viewmodel.implementation.HomeViewModel
 import org.junit.Before
 import org.junit.Test
 
-class HomeViewModelTest {
+class MainViewModelTest {
 
     lateinit var viewmodel: IHomeViewModel
 
