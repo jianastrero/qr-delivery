@@ -13,7 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.animation.doOnEnd
 import dagger.hilt.android.AndroidEntryPoint
-import dev.jianastrero.qr_delivery.navgraph.MainNavGraph
+import dev.jianastrero.qr_delivery.navgraph.AppNavGraph
 import dev.jianastrero.qr_delivery.ui.theme.QRDeliveryAppTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -33,9 +33,7 @@ class MainActivity : ComponentActivity(), ViewTreeObserver.OnPreDrawListener {
         setSplashScreenAnimation()
 
         setContent {
-            QRDeliveryAppTheme {
-                MainNavGraph()
-            }
+            MainActivityComposable()
         }
 
         content = findViewById(android.R.id.content)
@@ -104,8 +102,8 @@ class MainActivity : ComponentActivity(), ViewTreeObserver.OnPreDrawListener {
 
 @Preview
 @Composable
-private fun MainActivityPreview() {
+fun MainActivityComposable() {
     QRDeliveryAppTheme {
-        MainNavGraph()
+        AppNavGraph()
     }
 }
