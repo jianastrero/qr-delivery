@@ -1,4 +1,4 @@
-package dev.jianastrero.qr_delivery.screen
+package dev.jianastrero.qr_delivery.page
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -50,7 +50,7 @@ import dev.jianastrero.qr_delivery.viewmodel.domain.IHomeViewModel
 import dev.jianastrero.qr_delivery.viewmodel.implementation.HomeViewModel
 
 @Composable
-fun HomeScreen(
+fun HomePage(
     modifier: Modifier = Modifier,
     viewModel: IHomeViewModel = viewModel<HomeViewModel>()
 ) {
@@ -234,8 +234,8 @@ private fun TrackSection(modifier: Modifier = Modifier) {
 
 @Preview(backgroundColor = 0xFFFFFFFF)
 @Composable
-private fun HomeScreenPreview() {
+private fun HomePagePreview() {
     QRDeliveryAppTheme {
-        HomeScreen(viewModel = IHomeViewModel.Preview)
+        HomePage(viewModel = IHomeViewModel.Preview)
     }
 }
