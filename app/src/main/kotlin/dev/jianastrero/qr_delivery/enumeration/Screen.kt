@@ -88,6 +88,7 @@ sealed class Screen(route: String) {
     sealed class BottomNav(bottomNav: BottomNavEnum) : Screen(bottomNav.route) {
         data object Home : BottomNav(BottomNavEnum.Home)
         data object Parcels : BottomNav(BottomNavEnum.Parcels)
+        data object Track : BottomNav(BottomNavEnum.Track)
         data object Wallet : BottomNav(BottomNavEnum.Wallet)
         data object Profile : BottomNav(BottomNavEnum.Profile)
     }
