@@ -5,8 +5,8 @@ import androidx.compose.ui.graphics.Color
 val Primary = Color(0xFF430966)
 val Accent = Color(0xFFFFD700)
 
-val Text = Color(0xDF333333)
-val TextDark = Color(0xDFCCCCCC)
+val TextColor = Color(0xDF333333)
+val TextColorDark = Color(0xDFCCCCCC)
 
 val Border = Color(0xFFC7C7C7)
 val BorderDark = Color(0xFF505050)
