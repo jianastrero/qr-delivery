@@ -1,5 +1,6 @@
 package dev.jianastrero.qr_delivery.navgraph
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -7,6 +8,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import dev.jianastrero.qr_delivery.enumeration.Screen
 import dev.jianastrero.qr_delivery.extension.composable
+import dev.jianastrero.qr_delivery.page.HomePage
+import dev.jianastrero.qr_delivery.page.ParcelPage
+import dev.jianastrero.qr_delivery.page.ProfilePage
+import dev.jianastrero.qr_delivery.page.TrackPage
+import dev.jianastrero.qr_delivery.page.WalletPage
 
 @Composable
 fun MainNavGraph(
@@ -19,16 +25,19 @@ fun MainNavGraph(
         modifier = modifier
     ) {
         composable(Screen.BottomNav.Home) {
-            TODO("Home Screen")
+            HomePage(modifier = Modifier.fillMaxSize())
         }
         composable(Screen.BottomNav.Parcels) {
-            TODO("Parcels Screen")
+            ParcelPage(modifier = Modifier.fillMaxSize())
+        }
+        composable(Screen.BottomNav.Track) {
+            TrackPage(modifier = Modifier.fillMaxSize())
         }
         composable(Screen.BottomNav.Wallet) {
-            TODO("Parcels Screen")
+            WalletPage(modifier = Modifier.fillMaxSize())
         }
         composable(Screen.BottomNav.Profile) {
-            TODO("Parcels Screen")
+            ProfilePage(modifier = Modifier.fillMaxSize())
         }
     }
 }
