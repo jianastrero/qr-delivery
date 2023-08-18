@@ -20,7 +20,7 @@ fun MainNavGraph(navController: NavHostController = rememberNavController()) {
         composable(Screen.Auth.route) {
             AuthScreen(
                 onLoginClicked = {
-                    navController.navigate(Screen.Home.route) {
+                    navController.navigate(Screen.Main.route) {
                         popUpTo(Screen.Auth.route) {
                             inclusive = true
                         }
@@ -29,7 +29,7 @@ fun MainNavGraph(navController: NavHostController = rememberNavController()) {
                 modifier = Modifier.fillMaxSize()
             )
         }
-        composable(Screen.Home.route) {
+        composable(Screen.Main.route) {
             HomeScreen(modifier = Modifier.fillMaxSize())
         }
     }
