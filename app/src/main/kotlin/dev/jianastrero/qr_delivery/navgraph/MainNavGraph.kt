@@ -1,6 +1,5 @@
 package dev.jianastrero.qr_delivery.navgraph
 
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -8,8 +7,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import dev.jianastrero.qr_delivery.enumeration.Screen
 import dev.jianastrero.qr_delivery.extension.composable
-import dev.jianastrero.qr_delivery.screen.AuthScreen
-import dev.jianastrero.qr_delivery.screen.HomeScreen
 
 @Composable
 fun MainNavGraph(
@@ -22,19 +19,16 @@ fun MainNavGraph(
         modifier = modifier
     ) {
         composable(Screen.BottomNav.Home) {
-            AuthScreen(
-                onLoginClicked = {
-                    navController.navigate(Screen.Main.route) {
-                        popUpTo(Screen.Auth.route) {
-                            inclusive = true
-                        }
-                    }
-                },
-                modifier = Modifier.fillMaxSize()
-            )
+            TODO("Home Screen")
         }
-        composable(Screen.Main) {
-            HomeScreen(modifier = Modifier.fillMaxSize())
+        composable(Screen.BottomNav.Parcels) {
+            TODO("Parcels Screen")
+        }
+        composable(Screen.BottomNav.Wallet) {
+            TODO("Parcels Screen")
+        }
+        composable(Screen.BottomNav.Profile) {
+            TODO("Parcels Screen")
         }
     }
 }
