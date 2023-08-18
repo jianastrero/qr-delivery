@@ -2,6 +2,7 @@ package dev.jianastrero.qr_delivery.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.KeyboardArrowDown
@@ -42,6 +44,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.jianastrero.qr_delivery.R
+import dev.jianastrero.qr_delivery.ui.theme.Accent
 import dev.jianastrero.qr_delivery.ui.theme.QRDeliveryAppTheme
 import dev.jianastrero.qr_delivery.viewmodel.domain.IHomeViewModel
 import dev.jianastrero.qr_delivery.viewmodel.implementation.HomeViewModel
@@ -179,8 +182,8 @@ private fun TrackSection(modifier: Modifier = Modifier) {
             Text(
                 text = "Enter your tracking number or scan the QR Code to track your order",
                 color = Color.White,
-                fontSize = 12.sp,
-                lineHeight = 12.sp,
+                fontSize = 14.sp,
+                lineHeight = 14.sp,
                 modifier = Modifier
                     .padding(top = 4.dp)
                     .fillMaxWidth()
@@ -206,8 +209,15 @@ private fun TrackSection(modifier: Modifier = Modifier) {
                     Icon(
                         imageVector = Icons.Outlined.QrCode,
                         contentDescription = "QR Code",
-                        tint = Color.White,
-                        modifier = Modifier.size(20.dp)
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier
+                            .size(32.dp)
+                            .clickable {
+
+                            }
+                            .clip(CircleShape)
+                            .background(Accent)
+                            .padding(6.dp)
                     )
                 },
                 shape = MaterialTheme.shapes.extraLarge,
