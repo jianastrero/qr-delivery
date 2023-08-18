@@ -11,7 +11,7 @@ val TextDark = Color(0xDFCCCCCC)
 val Border = Color(0xFFC7C7C7)
 val BorderDark = Color(0xFF505050)
 
-val Neutral = Color(0xFFF4F4F4)
+val Neutral = Color(0xFFF5F1F8)
 val NeutralDark = Color(0xFF1A1A1A)
 
 val Success = Color(0xFF5AB957)
