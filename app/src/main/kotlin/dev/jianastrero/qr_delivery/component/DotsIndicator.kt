@@ -1,5 +1,11 @@
 package dev.jianastrero.qr_delivery.component
 
+import androidx.compose.animation.animateColor
+import androidx.compose.animation.core.EaseInOut
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -14,18 +20,21 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import dev.jianastrero.qr_delivery.ui.theme.Accent
-import dev.jianastrero.qr_delivery.ui.theme.Primary
 import dev.jianastrero.qr_delivery.ui.theme.QRDeliveryAppTheme
 
+
+private const val DURATION = 1000
 
 /**
  * Represents colors for dots.
@@ -46,7 +55,7 @@ data class DotColor(
  */
 data class LineColor(
     val default: Color = Color.White.copy(alpha = 0.5f),
-    val done: Color = Accent.copy(0.5f),
+    val done: Color = Accent.copy(alpha = 0.5f),
 )
 
 /**
@@ -102,19 +111,21 @@ fun RowScope.Dot(
     passed: Boolean,
     active: Boolean
 ) {
-    Spacer(
-        modifier = Modifier
-            .size(radius * 2)
-            .clip(CircleShape)
-            .background(
-                if (passed) dotColors.done else dotColors.default
-            )
-            .border(
-                width = if (active) radius / 2 else 0.dp,
-                color = dotColors.done,
-                shape = CircleShape
-            )
-    )
+    if (active) {
+        AnimatedDot(
+            radius = radius,
+            dotColors = dotColors
+        )
+    } else {
+        Spacer(
+            modifier = Modifier
+                .size(radius * 2)
+                .shadow(4.dp, CircleShape)
+                .clip(CircleShape)
+                .background(if (passed) dotColors.done else dotColors.default)
+                .border(1.dp, Color.White.copy(alpha = 0.5f), CircleShape)
+        )
+    }
 }
 
 @Composable
@@ -124,20 +135,71 @@ fun RowScope.Line(
     passed: Boolean,
     active: Boolean
 ) {
+    if (active) {
+        AnimatedLine(lineWidth = lineWidth, lineColors = lineColors)
+    } else {
+        Spacer(
+            modifier = Modifier
+                .height(lineWidth)
+                .weight(1f)
+                .clip(RoundedCornerShape(50))
+                .background(if (passed) lineColors.done else lineColors.default)
+        )
+    }
+}
+
+@Composable
+fun RowScope.AnimatedDot(
+    radius: Dp,
+    dotColors: DotColor,
+) {
+    val infiniteTransition = rememberInfiniteTransition(label = "InfiniteTransition")
+
+    val dotColor by infiniteTransition.animateColor(
+        initialValue = dotColors.done.copy(alpha = 0f),
+        targetValue = dotColors.done,
+        animationSpec = infiniteRepeatable(
+            tween(durationMillis = DURATION, easing = EaseInOut),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "colorAnimation"
+    )
+
+    Spacer(
+        modifier = Modifier
+            .size(radius * 2)
+            .shadow(4.dp, CircleShape)
+            .clip(CircleShape)
+            .background(dotColors.default)
+            .background(dotColor)
+            .border(1.dp, Color.White.copy(alpha = 0.5f), CircleShape)
+    )
+}
+
+@Composable
+fun RowScope.AnimatedLine(
+    lineWidth: Dp,
+    lineColors: LineColor,
+) {
+    val infiniteTransition = rememberInfiniteTransition(label = "InfiniteTransition")
+
+    val endColor by infiniteTransition.animateColor(
+        initialValue = lineColors.done.copy(alpha = 0f),
+        targetValue = lineColors.done,
+        animationSpec = infiniteRepeatable(
+            tween(durationMillis = DURATION, easing = EaseInOut),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "colorAnimation"
+    )
+
     Spacer(
         modifier = Modifier
             .height(lineWidth)
             .weight(1f)
             .clip(RoundedCornerShape(50))
-            .let {
-                if (active) {
-                    it.background(
-                        Brush.horizontalGradient(listOf(lineColors.done, lineColors.default))
-                    )
-                } else {
-                    it.background(if (passed) lineColors.done else lineColors.default)
-                }
-            }
+            .background(Brush.horizontalGradient(listOf(lineColors.done, endColor)))
+            .border(1.dp, lineColors.default.copy(alpha = 0.2f), RoundedCornerShape(50))
     )
 }
 
@@ -150,7 +212,6 @@ fun DotsIndicatorPreview() {
                 currentDot = 2,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Primary)
                     .padding(12.dp)
             )
         }
