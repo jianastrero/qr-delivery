@@ -14,7 +14,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.KeyboardArrowDown
 import androidx.compose.material.icons.outlined.LocationOn
 import androidx.compose.material.icons.outlined.Notifications
-import androidx.compose.material.icons.outlined.Numbers
 import androidx.compose.material.icons.outlined.QrCode
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -201,14 +200,6 @@ private fun TrackSection(modifier: Modifier = Modifier) {
                         text = "Tracking Number".uppercase(),
                         color = Color.White,
                         fontWeight = FontWeight.Black,
-                    )
-                },
-                leadingIcon = {
-                    Icon(
-                        imageVector = Icons.Outlined.Numbers,
-                        contentDescription = "QR Code",
-                        tint = Color.White,
-                        modifier = Modifier.size(20.dp)
                     )
                 },
                 trailingIcon = {
