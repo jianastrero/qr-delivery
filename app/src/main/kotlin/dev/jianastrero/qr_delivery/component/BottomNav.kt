@@ -54,7 +54,7 @@ fun BottomNav(
                 bottomNav = it,
                 isCircle = it == BottomNavEnum.Track,
                 onClick = {
-
+                    navController.navigate(it.route)
                 },
                 modifier = Modifier
                     .weight(1f)
