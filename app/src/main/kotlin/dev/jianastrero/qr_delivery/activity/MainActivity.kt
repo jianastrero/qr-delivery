@@ -50,7 +50,10 @@ class MainActivity : ComponentActivity(), ViewTreeObserver.OnPreDrawListener {
     }
 
     override fun onPreDraw(): Boolean =
-        if (System.currentTimeMillis() > splashScreenTimerStart + SPLASH_SCREEN_DURATION) {
+        if (
+            Build.VERSION.SDK_INT < Build.VERSION_CODES.S ||
+            System.currentTimeMillis() > splashScreenTimerStart + SPLASH_SCREEN_DURATION
+        ) {
             content.viewTreeObserver.removeOnPreDrawListener(this)
             true
         } else {
@@ -95,7 +98,7 @@ class MainActivity : ComponentActivity(), ViewTreeObserver.OnPreDrawListener {
     }
 
     companion object {
-        private const val SPLASH_SCREEN_DURATION = 1_500L
+        private const val SPLASH_SCREEN_DURATION = 1_000L
     }
 }
 
