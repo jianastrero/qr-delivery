@@ -4,9 +4,9 @@ import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
 import dev.jianastrero.qr_delivery.type.screen.Argument
 import dev.jianastrero.qr_delivery.type.screen.Parameter
-import dev.jianastrero.qr_delivery.type.screen.argument
 import dev.jianastrero.qr_delivery.type.screen.fromNavArgument
 import dev.jianastrero.qr_delivery.type.screen.toNavArgument
+import dev.jianastrero.qr_delivery.enumeration.BottomNav as BottomNavEnum
 
 sealed class Screen(route: String) {
 
@@ -83,6 +83,12 @@ sealed class Screen(route: String) {
         return constructor.call(*values.toTypedArray())
     }
 
-    object Home : Screen("home")
-    object Auth : Screen("auth")
+    data object Main : Screen("main")
+    data object Auth : Screen("auth")
+    sealed class BottomNav(bottomNav: BottomNavEnum) : Screen(bottomNav.route) {
+        data object Home : BottomNav(BottomNavEnum.Home)
+        data object Deliveries : BottomNav(BottomNavEnum.Parcels)
+        data object Wallet : BottomNav(BottomNavEnum.Wallet)
+        data object Profile : BottomNav(BottomNavEnum.Profile)
+    }
 }
