@@ -143,7 +143,7 @@ dependencies {
     implementation("com.google.android.gms:play-services-mlkit-barcode-scanning:$mlkitBarcodeScanning")
 
     // Compose Permissions
-    implementation(project(":compose-permissions"))
+    implementation("dev.jianastrero:compose-permissions:1.0.1")
 
     // Unit Test Dependencies
     testImplementation("junit:junit:4.13.2")
