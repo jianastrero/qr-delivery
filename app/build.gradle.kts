@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.*
+
 val appPackageName: String by project
 val appVersionCode: String by project
 val appVersionName: String by project
@@ -43,6 +46,24 @@ android {
         }
     }
 
+    val localProperties = Properties().apply {
+        FileInputStream(rootProject.file("local.properties")).use { load(it) }
+    }
+
+    signingConfigs {
+        create("release") {
+            val releaseStoreFile = localProperties.getProperty("storeFile")?.let { File(it) }
+            if (releaseStoreFile == null) {
+                println("The storeFile property is not set in the local.properties file.")
+            } else {
+                storeFile = releaseStoreFile
+                keyAlias = localProperties.getProperty("keyAlias")
+                keyPassword = localProperties.getProperty("keyPassword")
+                storePassword = localProperties.getProperty("storePassword")
+            }
+        }
+    }
+
     buildTypes {
         debug {
             isDebuggable = true
@@ -50,6 +71,7 @@ android {
         release {
             isDebuggable = false // Disable this if you want to debug
             isMinifyEnabled = true // Disable this if you want to debug
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
@@ -64,7 +86,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.0"
+        kotlinCompilerExtensionVersion = "1.5.1"
     }
     packaging {
         resources {
