@@ -120,6 +120,9 @@ dependencies {
     // MLKit
     implementation("com.google.android.gms:play-services-mlkit-barcode-scanning:$mlkitBarcodeScanning")
 
+    // Compose Permissions
+    implementation(project(":compose-permissions"))
+
     // Unit Test Dependencies
     testImplementation("junit:junit:4.13.2")
 
