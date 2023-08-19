@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "QR Delivery"
 include(":app")
+include(":compose-permissions")
