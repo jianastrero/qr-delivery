@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -21,6 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import dev.jianastrero.compose_permissions.composePermission
 import dev.jianastrero.qr_delivery.R
 import dev.jianastrero.qr_delivery.component.LoginWithApple
 import dev.jianastrero.qr_delivery.component.LoginWithGoogle
@@ -33,6 +35,7 @@ fun AuthScreen(
     modifier: Modifier = Modifier
 ) {
     val backgroundPainter = painterResource(id = R.drawable.design_one)
+    val cameraPermission = composePermission(android.Manifest.permission.CAMERA)
 
     Box(modifier = modifier) {
         Image(
@@ -59,7 +62,7 @@ fun AuthScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable {
-                         onLoginClicked()
+                        onLoginClicked()
                     }
             )
             LoginWithApple(
@@ -88,6 +91,12 @@ fun AuthScreen(
                 fontWeight = FontWeight.Black,
                 fontSize = 14.sp
             )
+        }
+    }
+
+    LaunchedEffect(cameraPermission) {
+        if (!cameraPermission.isGranted) {
+            cameraPermission.request()
         }
     }
 }
