@@ -107,6 +107,9 @@ dependencies {
     implementation("com.google.firebase:firebase-crashlytics-ktx")
     implementation("com.google.firebase:firebase-perf-ktx")
 
+    // MLKit
+    implementation("com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0")
+
     // Unit Test Dependencies
     testImplementation("junit:junit:4.13.2")
 
