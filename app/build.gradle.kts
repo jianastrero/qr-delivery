@@ -11,6 +11,7 @@ val androidXSplashScreenVersion: String by project
 val composeBomVersion: String by project
 val timberVersion: String by project
 val daggerHiltVersion: String by project
+val firebaseBomVersion: String by project
 
 plugins {
     id("com.android.application")
@@ -18,6 +19,9 @@ plugins {
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
     id("kotlin-parcelize")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
+    id("com.google.firebase.firebase-perf")
 }
 
 android {
@@ -96,6 +100,12 @@ dependencies {
     // Dagger Hilt
     implementation("com.google.dagger:hilt-android:$daggerHiltVersion")
     kapt("com.google.dagger:hilt-compiler:$daggerHiltVersion")
+
+    // Firebase
+    implementation(platform("com.google.firebase:firebase-bom:$firebaseBomVersion"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-crashlytics-ktx")
+    implementation("com.google.firebase:firebase-perf-ktx")
 
     // Unit Test Dependencies
     testImplementation("junit:junit:4.13.2")
