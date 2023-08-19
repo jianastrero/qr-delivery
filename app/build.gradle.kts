@@ -12,6 +12,7 @@ val composeBomVersion: String by project
 val timberVersion: String by project
 val daggerHiltVersion: String by project
 val firebaseBomVersion: String by project
+val cameraXVersion: String by project
 
 plugins {
     id("com.android.application")
@@ -93,6 +94,14 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.material:material-icons-extended")
+
+    // CameraX
+    implementation( "androidx.camera:camera-core:${cameraXVersion}")
+    implementation( "androidx.camera:camera-camera2:${cameraXVersion}")
+    implementation( "androidx.camera:camera-lifecycle:${cameraXVersion}")
+    implementation( "androidx.camera:camera-video:${cameraXVersion}")
+    implementation( "androidx.camera:camera-view:${cameraXVersion}")
+    implementation( "androidx.camera:camera-extensions:${cameraXVersion}")
 
     // Timber
     implementation("com.jakewharton.timber:timber:$timberVersion")
