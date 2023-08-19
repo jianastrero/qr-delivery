@@ -13,6 +13,7 @@ val timberVersion: String by project
 val daggerHiltVersion: String by project
 val firebaseBomVersion: String by project
 val cameraXVersion: String by project
+val mlkitBarcodeScanning: String by project
 
 plugins {
     id("com.android.application")
@@ -117,7 +118,7 @@ dependencies {
     implementation("com.google.firebase:firebase-perf-ktx")
 
     // MLKit
-    implementation("com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0")
+    implementation("com.google.android.gms:play-services-mlkit-barcode-scanning:$mlkitBarcodeScanning")
 
     // Unit Test Dependencies
     testImplementation("junit:junit:4.13.2")
